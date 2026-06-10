@@ -1,0 +1,210 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>LectoAventura | Leer y escribir</title>
+    <meta
+      name="description"
+      content="Aplicación educativa para practicar lectura y escritura inicial en español."
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar">
+        <button class="brand" type="button" data-route="home" aria-label="Ir al inicio">
+          <span class="brand-mark">LA</span>
+          <span class="brand-copy">
+            <strong>LectoAventura</strong>
+            <small>leer + escribir</small>
+          </span>
+        </button>
+
+        <nav class="nav-tabs" aria-label="Secciones">
+          <button class="nav-tab is-active" type="button" data-route="home">Inicio</button>
+          <button class="nav-tab" type="button" data-route="practice">Practicar</button>
+          <button class="nav-tab" type="button" data-route="writing">Trazar</button>
+          <button class="nav-tab" type="button" data-route="story">Cuento</button>
+          <button class="nav-tab" type="button" data-route="grownup">Adulto</button>
+        </nav>
+
+        <button class="sound-button" type="button" id="soundToggle" aria-pressed="true">
+          <span aria-hidden="true">🔊</span>
+          <span class="sr-only">Activar o desactivar sonido</span>
+        </button>
+      </header>
+
+      <main>
+        <section class="view is-active" id="homeView" data-view="home">
+          <div class="home-layout">
+            <section class="daily-panel" aria-labelledby="homeTitle">
+              <div class="daily-copy">
+                <p class="eyebrow">Rutina de hoy</p>
+                <h1 id="homeTitle">Aprender a leer jugando, paso a paso.</h1>
+                <p class="daily-text" id="dailyMessage">
+                  Empieza con vocales, une sílabas y termina trazando palabras cortas.
+                </p>
+                <div class="hero-actions">
+                  <button class="primary-action" type="button" id="startRoutine">
+                    Empezar
+                  </button>
+                  <button class="secondary-action" type="button" data-route="writing">
+                    Trazar letras
+                  </button>
+                </div>
+              </div>
+              <figure class="hero-figure">
+                <img
+                  src="assets/hero-reading.png"
+                  alt="Libro abierto, bloques de letras y cuaderno de sílabas"
+                />
+              </figure>
+            </section>
+
+            <aside class="progress-panel" aria-labelledby="progressTitle">
+              <p class="eyebrow">Progreso</p>
+              <h2 id="progressTitle">Mi avance</h2>
+              <div class="progress-ring" aria-label="Porcentaje de meta diaria completada">
+                <svg viewBox="0 0 120 120" role="img" aria-hidden="true">
+                  <circle class="ring-track" cx="60" cy="60" r="50"></circle>
+                  <circle class="ring-value" id="progressCircle" cx="60" cy="60" r="50"></circle>
+                </svg>
+                <span id="progressPercent">0%</span>
+              </div>
+              <dl class="score-list">
+                <div>
+                  <dt>Puntos</dt>
+                  <dd id="scoreValue">0</dd>
+                </div>
+                <div>
+                  <dt>Logros</dt>
+                  <dd id="badgeValue">0</dd>
+                </div>
+                <div>
+                  <dt>Racha</dt>
+                  <dd id="streakValue">0</dd>
+                </div>
+              </dl>
+            </aside>
+          </div>
+
+          <section class="module-section" aria-labelledby="modulesTitle">
+            <div class="section-heading">
+              <p class="eyebrow">Misiones</p>
+              <h2 id="modulesTitle">Elige una actividad</h2>
+            </div>
+            <div class="module-grid" id="moduleGrid"></div>
+          </section>
+        </section>
+
+        <section class="view" id="practiceView" data-view="practice">
+          <div class="tool-layout">
+            <aside class="activity-menu" aria-labelledby="practiceTitle">
+              <p class="eyebrow">Practicar</p>
+              <h2 id="practiceTitle">Lectura inicial</h2>
+              <div class="activity-buttons" id="activityButtons"></div>
+            </aside>
+
+            <section class="activity-stage" aria-live="polite">
+              <div class="stage-header">
+                <div>
+                  <p class="eyebrow" id="activityEyebrow">Vocales</p>
+                  <h2 id="activityTitle">Encuentra la vocal</h2>
+                </div>
+                <button class="icon-text-button" type="button" id="speakPrompt">
+                  <span aria-hidden="true">▶</span>
+                  Escuchar
+                </button>
+              </div>
+              <div id="activityArea" class="activity-area"></div>
+            </section>
+          </div>
+        </section>
+
+        <section class="view" id="writingView" data-view="writing">
+          <div class="writing-layout">
+            <aside class="writing-menu" aria-labelledby="writingTitle">
+              <p class="eyebrow">Trazar</p>
+              <h2 id="writingTitle">Mano y letra</h2>
+              <label class="field-label" for="writingSelect">Modelo</label>
+              <select id="writingSelect"></select>
+
+              <div class="swatch-row" aria-label="Color del lápiz">
+                <button class="swatch is-active" type="button" data-color="#2d9cdb" style="--swatch: #2d9cdb">
+                  <span class="sr-only">Azul</span>
+                </button>
+                <button class="swatch" type="button" data-color="#ef476f" style="--swatch: #ef476f">
+                  <span class="sr-only">Coral</span>
+                </button>
+                <button class="swatch" type="button" data-color="#2a9d8f" style="--swatch: #2a9d8f">
+                  <span class="sr-only">Verde</span>
+                </button>
+                <button class="swatch" type="button" data-color="#6c63ff" style="--swatch: #6c63ff">
+                  <span class="sr-only">Morado</span>
+                </button>
+              </div>
+
+              <label class="field-label" for="strokeSize">Grosor</label>
+              <input id="strokeSize" type="range" min="4" max="18" value="9" />
+
+              <div class="stacked-actions">
+                <button class="secondary-action" type="button" id="clearCanvas">Limpiar</button>
+                <button class="primary-action" type="button" id="saveTrace">Listo</button>
+              </div>
+            </aside>
+
+            <section class="trace-stage" aria-label="Zona para trazar letras">
+              <canvas id="traceCanvas"></canvas>
+            </section>
+          </div>
+        </section>
+
+        <section class="view" id="storyView" data-view="story">
+          <section class="story-stage" aria-labelledby="storyTitle">
+            <div class="section-heading">
+              <p class="eyebrow">Cuento corto</p>
+              <h2 id="storyTitle">Lee y completa</h2>
+            </div>
+            <div id="storyArea" class="story-area"></div>
+          </section>
+        </section>
+
+        <section class="view" id="grownupView" data-view="grownup">
+          <div class="grownup-layout">
+            <section class="grownup-panel" aria-labelledby="grownupTitle">
+              <p class="eyebrow">Adulto</p>
+              <h2 id="grownupTitle">Acompañamiento</h2>
+              <form class="name-form" id="nameForm">
+                <label class="field-label" for="childName">Nombre del niño</label>
+                <div class="inline-form">
+                  <input id="childName" name="childName" type="text" maxlength="24" autocomplete="off" />
+                  <button class="secondary-action" type="submit">Guardar</button>
+                </div>
+              </form>
+              <ol class="daily-plan">
+                <li>5 minutos de vocales con lectura en voz alta.</li>
+                <li>5 minutos de sílabas y palabras de dos partes.</li>
+                <li>5 minutos de trazos grandes, sin prisa.</li>
+                <li>Cerrar con un cuento corto y celebrar el esfuerzo.</li>
+              </ol>
+            </section>
+
+            <section class="grownup-panel" aria-labelledby="detailTitle">
+              <p class="eyebrow">Detalle</p>
+              <h2 id="detailTitle">Registro local</h2>
+              <div class="detail-grid" id="detailGrid"></div>
+              <div class="stacked-actions">
+                <button class="secondary-action" type="button" id="printProgress">Imprimir</button>
+                <button class="danger-action" type="button" id="resetProgress">Reiniciar</button>
+              </div>
+            </section>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    <script src="app.js"></script>
+  </body>
+</html>
