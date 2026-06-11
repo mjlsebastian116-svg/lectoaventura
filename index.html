@@ -3,54 +3,68 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>LectoAventura | Leer y escribir</title>
+    <title>LectoAventura | Samuel lee y escribe</title>
     <meta
       name="description"
-      content="Aplicación educativa para practicar lectura y escritura inicial en español."
+      content="Aplicación educativa para practicar lectura, escritura, dictado y progreso diario."
     />
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="styles.css?v=dictadofisico1" />
   </head>
   <body>
     <div class="app-shell">
       <header class="topbar">
         <button class="brand" type="button" data-route="home" aria-label="Ir al inicio">
-          <span class="brand-mark">LA</span>
-          <span class="brand-copy">
-            <strong>LectoAventura</strong>
-            <small>leer + escribir</small>
-          </span>
-        </button>
+  <span class="brand-logo">
+    <img src="assets/logo.png" alt="" aria-hidden="true" />
+  </span>
+
+  <span class="brand-copy">
+    <strong>LectoAventura</strong>
+    <small>Samuel aprende</small>
+  </span>
+</button>
 
         <nav class="nav-tabs" aria-label="Secciones">
           <button class="nav-tab is-active" type="button" data-route="home">Inicio</button>
           <button class="nav-tab" type="button" data-route="practice">Practicar</button>
           <button class="nav-tab" type="button" data-route="writing">Trazar</button>
+          <button class="nav-tab" type="button" data-route="dictation">Dictado</button>
           <button class="nav-tab" type="button" data-route="story">Cuento</button>
           <button class="nav-tab" type="button" data-route="grownup">Adulto</button>
         </nav>
 
         <button class="sound-button" type="button" id="soundToggle" aria-pressed="true">
-          <span aria-hidden="true">🔊</span>
-          <span class="sr-only">Activar o desactivar sonido</span>
+          Audio
         </button>
       </header>
+
+<div class="section-guide" id="sectionGuide" hidden>
+  <div>
+    <strong id="sectionGuideTitle">Sección</strong>
+    <p id="sectionGuideText">Mensaje de ayuda.</p>
+  </div>
+  <button type="button" id="closeSectionGuide">Cerrar</button>
+</div>
 
       <main>
         <section class="view is-active" id="homeView" data-view="home">
           <div class="home-layout">
             <section class="daily-panel" aria-labelledby="homeTitle">
               <div class="daily-copy">
-                <p class="eyebrow">Rutina de hoy</p>
-                <h1 id="homeTitle">Aprender a leer jugando, paso a paso.</h1>
+                <p class="eyebrow" id="todayLabel">Lección de hoy</p>
+                <h1 id="homeTitle">SAMUEL lee, escribe y avanza cada día.</h1>
                 <p class="daily-text" id="dailyMessage">
-                  Empieza con vocales, une sílabas y termina trazando palabras cortas.
+                  Hoy practica con calma: leer, decir en voz alta, copiar en hoja y hacer dictado.
                 </p>
+                <div class="motivation-strip" id="motivationStrip">
+                  SAMUEL, cada palabra bien hecha cuenta.
+                </div>
                 <div class="hero-actions">
                   <button class="primary-action" type="button" id="startRoutine">
-                    Empezar
+                    Lección de hoy
                   </button>
-                  <button class="secondary-action" type="button" data-route="writing">
-                    Trazar letras
+                  <button class="secondary-action" type="button" data-route="dictation">
+                    Hacer dictado
                   </button>
                 </div>
               </div>
@@ -63,8 +77,8 @@
             </section>
 
             <aside class="progress-panel" aria-labelledby="progressTitle">
-              <p class="eyebrow">Progreso</p>
-              <h2 id="progressTitle">Mi avance</h2>
+              <p class="eyebrow">Progreso diario</p>
+              <h2 id="progressTitle">Avance de SAMUEL</h2>
               <div class="progress-ring" aria-label="Porcentaje de meta diaria completada">
                 <svg viewBox="0 0 120 120" role="img" aria-hidden="true">
                   <circle class="ring-track" cx="60" cy="60" r="50"></circle>
@@ -74,8 +88,12 @@
               </div>
               <dl class="score-list">
                 <div>
-                  <dt>Puntos</dt>
+                  <dt>Puntos de hoy</dt>
                   <dd id="scoreValue">0</dd>
+                </div>
+                <div>
+                  <dt>Nivel</dt>
+                  <dd id="levelValue">1/50</dd>
                 </div>
                 <div>
                   <dt>Logros</dt>
@@ -89,10 +107,61 @@
             </aside>
           </div>
 
+          <section class="character-section" aria-label="Amigos de lectura de Samuel">
+            <div class="section-heading">
+              <p class="eyebrow">Amigos de lectura</p>
+              <h2>Personajes que animan a SAMUEL</h2>
+            </div>
+            <div class="character-strip">
+              <figure class="character-card">
+                <img src="assets/Flash-1.png" alt="Flash animando a Samuel" />
+                <figcaption>Flash</figcaption>
+              </figure>
+              <figure class="character-card">
+                <img src="assets/flash-2.png" alt="Flash en la lectura" />
+                <figcaption>Flash lector</figcaption>
+              </figure>
+              <figure class="character-card">
+                <img src="assets/mickey-1.png" alt="Mickey animando a Samuel" />
+                <figcaption>Mickey</figcaption>
+              </figure>
+              <figure class="character-card">
+                <img src="assets/spiderman-1.png" alt="Spider-Man animando a Samuel" />
+                <figcaption>Spider-Man</figcaption>
+              </figure>
+              <figure class="character-card">
+                <img src="assets/spiderman-2-web.png" alt="Spider-Man acompana la lectura" />
+                <figcaption>Spidey</figcaption>
+              </figure>
+              <figure class="character-card">
+                <img src="assets/spiderman-3-web.png" alt="Spider-Man celebra el avance" />
+                <figcaption>Heroe lector</figcaption>
+              </figure>
+            </div>
+          </section>
+
+          <section class="lesson-section" aria-labelledby="dailyLessonTitle">
+            <div class="section-heading">
+              <p class="eyebrow">Lunes a viernes</p>
+              <h2 id="dailyLessonTitle">Plan diario</h2>
+            </div>
+            <div class="lesson-board" id="dailyLessonBoard"></div>
+            <div class="lesson-complete-banner" id="dailyCompleteMessage" hidden></div>
+            <div class="daily-exam" id="dailyExam"></div>
+          </section>
+
+          <section class="level-section" aria-labelledby="levelsTitle">
+            <div class="section-heading">
+              <p class="eyebrow">50 niveles</p>
+              <h2 id="levelsTitle">Escoge el nivel</h2>
+            </div>
+            <div class="level-grid" id="levelGrid"></div>
+          </section>
+
           <section class="module-section" aria-labelledby="modulesTitle">
             <div class="section-heading">
-              <p class="eyebrow">Misiones</p>
-              <h2 id="modulesTitle">Elige una actividad</h2>
+              <p class="eyebrow">Juegos de aprendizaje</p>
+              <h2 id="modulesTitle">Actividades completas</h2>
             </div>
             <div class="module-grid" id="moduleGrid"></div>
           </section>
@@ -102,7 +171,7 @@
           <div class="tool-layout">
             <aside class="activity-menu" aria-labelledby="practiceTitle">
               <p class="eyebrow">Practicar</p>
-              <h2 id="practiceTitle">Lectura inicial</h2>
+              <h2 id="practiceTitle">Lectura nivel <span id="practiceLevel">1</span></h2>
               <div class="activity-buttons" id="activityButtons"></div>
             </aside>
 
@@ -113,7 +182,6 @@
                   <h2 id="activityTitle">Encuentra la vocal</h2>
                 </div>
                 <button class="icon-text-button" type="button" id="speakPrompt">
-                  <span aria-hidden="true">▶</span>
                   Escuchar
                 </button>
               </div>
@@ -125,9 +193,9 @@
         <section class="view" id="writingView" data-view="writing">
           <div class="writing-layout">
             <aside class="writing-menu" aria-labelledby="writingTitle">
-              <p class="eyebrow">Trazar</p>
-              <h2 id="writingTitle">Mano y letra</h2>
-              <label class="field-label" for="writingSelect">Modelo</label>
+              <p class="eyebrow">Trazar y copiar</p>
+              <h2 id="writingTitle">Escritura nivel <span id="writingLevel">1</span></h2>
+              <label class="field-label" for="writingSelect">Palabra o sílaba</label>
               <select id="writingSelect"></select>
 
               <div class="swatch-row" aria-label="Color del lápiz">
@@ -150,20 +218,47 @@
 
               <div class="stacked-actions">
                 <button class="secondary-action" type="button" id="clearCanvas">Limpiar</button>
-                <button class="primary-action" type="button" id="saveTrace">Listo</button>
+                <button class="primary-action" type="button" id="saveTrace">Trazo listo</button>
               </div>
+              <p class="trace-feedback" id="traceFeedback" aria-live="polite">
+                Traza la letra y toca Trazo listo.
+              </p>
             </aside>
 
             <section class="trace-stage" aria-label="Zona para trazar letras">
               <canvas id="traceCanvas"></canvas>
+              <div class="paper-practice" id="paperPractice"></div>
             </section>
+          </div>
+        </section>
+
+        <section class="view" id="dictationView" data-view="dictation">
+          <div class="dictation-layout">
+            <aside class="dictation-menu" aria-labelledby="dictationTitle">
+              <p class="eyebrow">Dictado en hoja</p>
+              <h2 id="dictationTitle">Nivel <span id="dictationLevel">1</span></h2>
+              <div class="stacked-actions">
+                <button class="primary-action" type="button" id="playDictation">Escuchar</button>
+                <button class="secondary-action" type="button" id="showDictationWord">Mostrar</button>
+                <button class="secondary-action" type="button" id="nextDictation">Siguiente</button>
+              </div>
+              <button class="primary-action full-button" type="button" id="finishDictation">
+                Lo escribí en mi hoja
+              </button>
+            </aside>
+
+            <section class="dictation-stage" aria-live="polite">
+              <div id="dictationArea"></div>
+              <div class="dictation-word-list" id="dictationWordList"></div>
+            </section>
+
           </div>
         </section>
 
         <section class="view" id="storyView" data-view="story">
           <section class="story-stage" aria-labelledby="storyTitle">
             <div class="section-heading">
-              <p class="eyebrow">Cuento corto</p>
+              <p class="eyebrow">Lectura guiada</p>
               <h2 id="storyTitle">Lee y completa</h2>
             </div>
             <div id="storyArea" class="story-area"></div>
@@ -182,18 +277,14 @@
                   <button class="secondary-action" type="submit">Guardar</button>
                 </div>
               </form>
-              <ol class="daily-plan">
-                <li>5 minutos de vocales con lectura en voz alta.</li>
-                <li>5 minutos de sílabas y palabras de dos partes.</li>
-                <li>5 minutos de trazos grandes, sin prisa.</li>
-                <li>Cerrar con un cuento corto y celebrar el esfuerzo.</li>
-              </ol>
+              <ol class="daily-plan" id="adultPlan"></ol>
             </section>
 
             <section class="grownup-panel" aria-labelledby="detailTitle">
-              <p class="eyebrow">Detalle</p>
-              <h2 id="detailTitle">Registro local</h2>
+              <p class="eyebrow">Registro</p>
+              <h2 id="detailTitle">Progreso guardado</h2>
               <div class="detail-grid" id="detailGrid"></div>
+              <div class="history-list" id="historyList"></div>
               <div class="stacked-actions">
                 <button class="secondary-action" type="button" id="printProgress">Imprimir</button>
                 <button class="danger-action" type="button" id="resetProgress">Reiniciar</button>
@@ -204,7 +295,11 @@
       </main>
     </div>
 
+    <div class="welcome-float" id="welcomeFloat" role="status" aria-live="polite">
+      <p>Esta pagina la hizo el tio negro para que el mono sea el mejor!!!</p>
+      <button class="welcome-close" type="button" id="closeWelcomeFloat" aria-label="Cerrar mensaje">X</button>
+    </div>
     <div class="toast" id="toast" role="status" aria-live="polite"></div>
-    <script src="app.js"></script>
+    <script src="app.js?v=dictadofisico1"></script>
   </body>
 </html>
